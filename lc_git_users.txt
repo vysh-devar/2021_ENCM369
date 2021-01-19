@@ -1,2 +1,0 @@
-firstname,lastname,email,git_username,repository_name
-Vyshnavi,Devarakonda,venkatasrivyshnavi.d@ucalgary.ca,vysh-devar,2021_ENCM369
