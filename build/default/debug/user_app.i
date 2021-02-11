@@ -27318,7 +27318,7 @@ void UserAppRun(void)
     unsigned char i;
     for (i=0;i<63;i++){
         LATA++;
-        _delay((unsigned long)((250)*(64000000/4000.0)));
+        _delay((unsigned long)((250)*(16000000/4000.0)));
     }
 
 }
