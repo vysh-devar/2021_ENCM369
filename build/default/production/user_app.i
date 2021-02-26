@@ -27315,10 +27315,10 @@ void UserAppInitialize(void)
 # 96 "user_app.c"
 void UserAppRun(void)
 {
-    unsigned char i;
-    for (i=0;i<63;i++){
-        LATA++;
-        _delay((unsigned long)((250)*(64000000/4000.0)));
+    static u32 u32counter=0x00;
+    if (RB5==1){
+        u32counter=+1;
+        LATA=LATA^u32counter;
+        _delay((unsigned long)((250)*(16000000/4000.0)));
     }
-
 }
