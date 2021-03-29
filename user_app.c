@@ -75,11 +75,21 @@ Promises:
 */
 void UserAppInitialize(void)
 {
-
+    LATA=0x80;
+    T0CON0=0x90;
+    T0CON1=0x54;
+    
 
 } /* end UserAppInitialize() */
 
   
+void TimeXus(u16 u16Time){
+    T0CON0&=0x7F;
+    TMR0H=(u16Time & 0xFF00)>>8;
+    TMR0L= u16Time & 0x00FF;
+    PIR3 &= 0x7F;
+    T0CON0 |= 0x80;
+}
 /*!----------------------------------------------------------------------------------------------------------------------
 @fn void UserAppRun(void)
 
@@ -92,13 +102,19 @@ Promises:
 - 
 
 */
-#define _XTAL_FREQ 16000000
+#define _XTAL_FREQ 64000000
 void UserAppRun(void)
 {
-    unsigned char i;
-    for (i=0;i<63;i++){
-        LATA++;
-        __delay_ms(250);
+    u8 au8Pattern[6]={0x01, 0x04, 0x10, 0x02, 0x08, 0x20};
+    static u8 u8Element=0x00;
+    
+    for (u8Element=0x00; u8Element<0x06; u8Element++){
+        LATA= au8Pattern[u8Element];
+        u8Element++;
+        if(u8Element==0x06){
+            u8Element=0x00;
+            
+        }
     }
 
 } /* end UserAppRun */
