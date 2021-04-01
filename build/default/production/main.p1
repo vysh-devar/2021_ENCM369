@@ -2596,49 +2596,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 "53
 [; ;main.c: 53:   {
 {
-"57
-[; ;main.c: 57:     UserAppRun();
-[e ( _UserAppRun ..  ]
-"61
-[; ;main.c: 61:     (LATA &=0x7F);
-[e =& _LATA -> -> 127 `i `Vuc ]
-"62
-[; ;main.c: 62:     SystemSleep();
-[e ( _SystemSleep ..  ]
-"63
-[; ;main.c: 63:     TimeXus(0x03E8);
-[e ( _TimeXus (1 -> -> 1000 `i `us ]
 "64
-[; ;main.c: 64:     while (1){
-[e :U 2277 ]
-{
-"65
-[; ;main.c: 65:         if (PIR3==0x80){
-[e $ ! == -> _PIR3 `i -> 128 `i 2279  ]
-{
+[; ;main.c: 64:       UserAppRun();
+[e ( _UserAppRun ..  ]
 "66
-[; ;main.c: 66:             break;
-[e $U 2278  ]
+[; ;main.c: 66:     (LATA &=0x7F);
+[e =& _LATA -> -> 127 `i `Vuc ]
 "67
-[; ;main.c: 67:         }
-}
-[e :U 2279 ]
+[; ;main.c: 67:     SystemSleep();
+[e ( _SystemSleep ..  ]
 "68
-[; ;main.c: 68:     }
-}
-[e :U 2276 ]
-[e $U 2277  ]
-[e :U 2278 ]
+[; ;main.c: 68:     TimeXus(10);
+[e ( _TimeXus (1 -> -> 10 `i `us ]
 "69
-[; ;main.c: 69:     (LATA |=0x80);
+[; ;main.c: 69:     while ((PIR3 & 0x80) != 0x80);
+[e $U 2276  ]
+[e :U 2277 ]
+[e :U 2276 ]
+[e $ != & -> _PIR3 `i -> 128 `i -> 128 `i 2277  ]
+[e :U 2278 ]
+"70
+[; ;main.c: 70:     (LATA |=0x80);
 [e =| _LATA -> -> 128 `i `Vuc ]
-"71
-[; ;main.c: 71:   }
+"72
+[; ;main.c: 72:   }
 }
 [e :U 2273 ]
 [e $U 2274  ]
 [e :U 2275 ]
-"73
-[; ;main.c: 73: }
+"74
+[; ;main.c: 74: }
 [e :UE 2272 ]
 }
